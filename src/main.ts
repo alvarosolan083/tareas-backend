@@ -10,8 +10,12 @@ async function bootstrap() {
       'http://localhost:5173', // Desarrollo local
       'https://tareas-frontend-dusky.vercel.app' // Producción Vercel
     ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
     credentials: true,
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }
